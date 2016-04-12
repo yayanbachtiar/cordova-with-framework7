@@ -3,5 +3,5 @@
 * clone this repo
 ```cordova platforms add android```
 
-to build
+* to build
 ```cordova build android```
