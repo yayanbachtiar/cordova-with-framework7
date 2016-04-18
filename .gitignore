@@ -1,1 +1,3 @@
 platforms/*
+.vscode/*
+node_modules/*
