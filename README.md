@@ -10,7 +10,9 @@ cordova platforms add android
 ```
 
 * to build
-```cordova build android```
+```
+cordova build android
+```
 
 * to run livereload
 ```
