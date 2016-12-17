@@ -1,6 +1,6 @@
 {
-    "name": "siempus",
-    "version": "0.0.1",
+    "name": "mbcmplk",
+    "version": "0.0.2",
     "dependencies": {},
     "devDependencies": {
         "grunt": "~0.4.2",

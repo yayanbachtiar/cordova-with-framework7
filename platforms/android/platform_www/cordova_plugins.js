@@ -1,13 +1,15 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
         "id": "cordova-plugin-whitelist.whitelist",
+        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+        "pluginId": "cordova-plugin-whitelist",
         "runs": true
     },
     {
-        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
         "id": "cordova-sqlite-storage.SQLitePlugin",
+        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+        "pluginId": "cordova-sqlite-storage",
         "clobbers": [
             "SQLitePlugin"
         ]

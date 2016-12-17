@@ -1,13 +1,13 @@
 var
-LIVERELOAD_PORT = 35729,
+    LIVERELOAD_PORT = 35729,
     lrSnippet = require('connect-livereload')({
         port: LIVERELOAD_PORT
     }),
-    mountFolder = function(connect, dir) {
+    mountFolder = function (connect, dir) {
         return connect.static(require('path').resolve(dir));
     };
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
         connect: {
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             },
             livereload: {
                 options: {
-                    middleware: function(connect) {
+                    middleware: function (connect) {
                         return [
                             lrSnippet,
                             mountFolder(connect, 'www')
@@ -47,4 +47,4 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', ['connect', 'watch']);
-}
+};
