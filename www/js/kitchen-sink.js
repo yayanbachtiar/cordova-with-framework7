@@ -1,19 +1,19 @@
 // Init App
 var myApp = new Framework7({
     modalTitle: 'Framework7',
+    template7Pages: true, //enable Template7 rendering for pages
+
     // Enable Material theme
-    material: true,
+    material: true
 });
 
 // Expose Internal DOM library
 var $$ = Dom7;
 
 // Add main view
-var mainView = myApp.addView('.view-main', {
-});
+var mainView = myApp.addView('.view-main', {});
 // Add another view, which is in right panel
-var rightView = myApp.addView('.view-right', {
-});
+var rightView = myApp.addView('.view-right', {});
 
 // Show/hide preloader for remote ajax loaded pages
 // Probably should be removed on a production/local app
@@ -149,11 +149,9 @@ myApp.onPageInit('swipe-delete modals media-lists', function (page) {
             },
         ],
         // Second group
-        [
-            {
-                text: 'Cancel'
-            }
-        ]
+        [{
+            text: 'Cancel'
+        }]
     ];
     $$('.demo-actions').on('click', function (e) {
         myApp.actions(actionSheetButtons);
@@ -182,12 +180,10 @@ myApp.onPageInit('messages', function (page) {
         'Need to think about it',
         'Amazing!!!',
     ];
-    var people = [
-        {
+    var people = [{
             name: 'Kate Johnson',
             avatar: 'http://lorempixel.com/output/people-q-c-100-100-9.jpg'
-        },
-        {
+        }, {
             name: 'Blue Ninja',
             avatar: 'http://lorempixel.com/output/people-q-c-100-100-7.jpg'
         },
@@ -256,14 +252,14 @@ myApp.onPageInit('pull-to-refresh', function (page) {
             var song = songs[Math.floor(Math.random() * songs.length)];
             var author = authors[Math.floor(Math.random() * authors.length)];
             var linkHTML = '<li class="item-content">' +
-                                '<div class="item-media"><img src="' + picURL + '" width="44"/></div>' +
-                                '<div class="item-inner">' +
-                                    '<div class="item-title-row">' +
-                                        '<div class="item-title">' + song + '</div>' +
-                                    '</div>' +
-                                    '<div class="item-subtitle">' + author + '</div>' +
-                                '</div>' +
-                            '</li>';
+                '<div class="item-media"><img src="' + picURL + '" width="44"/></div>' +
+                '<div class="item-inner">' +
+                '<div class="item-title-row">' +
+                '<div class="item-title">' + song + '</div>' +
+                '</div>' +
+                '<div class="item-subtitle">' + author + '</div>' +
+                '</div>' +
+                '</li>';
             ptrContent.find('ul').prepend(linkHTML);
             // When loading done, we need to "close" it
             myApp.pullToRefreshDone();
@@ -284,18 +280,15 @@ myApp.onPageInit('sortable-list', function (page) {
 
 /* ===== Photo Browser Examples ===== */
 // Create photoprobsers first:
-var photoBrowserPhotos = [
-	{
-		url: 'img/beach.jpg',
-		caption: 'Amazing beach in Goa, India'
-	},
+var photoBrowserPhotos = [{
+        url: 'img/beach.jpg',
+        caption: 'Amazing beach in Goa, India'
+    },
     'http://placekitten.com/1024/1024',
-    'img/lock.jpg',
-    {
+    'img/lock.jpg', {
         url: 'img/monkey.jpg',
         caption: 'I met this monkey in Chinese mountains'
-    },
-    {
+    }, {
         url: 'img/mountains.jpg',
         caption: 'Beautiful mountains in Zhangjiajie, China'
     }
@@ -360,13 +353,14 @@ myApp.onPageInit('infinite-scroll', function (page) {
         // Set loading trigger
         loading = true;
         // Request some file with data
-        $$.get('infinite-scroll-load.php', {leftIndex: lastLoadedIndex + 1}, function (data) {
+        $$.get('infinite-scroll-load.php', {
+            leftIndex: lastLoadedIndex + 1
+        }, function (data) {
             loading = false;
             if (data === '') {
                 // Nothing more to load, detach infinite scroll events to prevent unnecessary loadings
                 myApp.detachInfiniteScroll($$('.infinite-scroll'));
-            }
-            else {
+            } else {
                 // Append loaded elements to list block
                 $$('.infinite-scroll .list-block ul').append(data);
                 // Update last loaded index
@@ -477,15 +471,15 @@ myApp.onPageInit('virtual-list', function (page) {
         },
         // List item Template7 template
         template: '<li>' +
-                    '<a href="#" class="item-link item-content">' +
-                      '<div class="item-inner">' +
-                        '<div class="item-title-row">' +
-                          '<div class="item-title">{{title}}</div>' +
-                        '</div>' +
-                        '<div class="item-subtitle">{{subtitle}}</div>' +
-                      '</div>' +
-                    '</a>' +
-                  '</li>',
+            '<a href="#" class="item-link item-content">' +
+            '<div class="item-inner">' +
+            '<div class="item-title-row">' +
+            '<div class="item-title">{{title}}</div>' +
+            '</div>' +
+            '<div class="item-subtitle">{{subtitle}}</div>' +
+            '</div>' +
+            '</a>' +
+            '</li>',
         // Item height
         height: 73,
     });
@@ -531,27 +525,26 @@ myApp.onPageInit('calendar', function (page) {
         rangePicker: true
     });
     // Inline with custom toolbar
-    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September' , 'October', 'November', 'December'];
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var calendarInline = myApp.calendar({
         container: '#ks-calendar-inline-container',
         value: [new Date()],
         weekHeader: false,
         header: false,
         footer: false,
-        toolbarTemplate:
-            '<div class="toolbar calendar-custom-toolbar">' +
-                '<div class="toolbar-inner">' +
-                    '<div class="left">' +
-                        '<a href="#" class="link icon-only"><i class="icon icon-back"></i></a>' +
-                    '</div>' +
-                    '<div class="center"></div>' +
-                    '<div class="right">' +
-                        '<a href="#" class="link icon-only"><i class="icon icon-forward"></i></a>' +
-                    '</div>' +
-                '</div>' +
+        toolbarTemplate: '<div class="toolbar calendar-custom-toolbar">' +
+            '<div class="toolbar-inner">' +
+            '<div class="left">' +
+            '<a href="#" class="link icon-only"><i class="icon icon-back"></i></a>' +
+            '</div>' +
+            '<div class="center"></div>' +
+            '<div class="right">' +
+            '<a href="#" class="link icon-only"><i class="icon icon-forward"></i></a>' +
+            '</div>' +
+            '</div>' +
             '</div>',
         onOpen: function (p) {
-            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
+            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] + ', ' + p.currentYear);
             $$('.calendar-custom-toolbar .left .link').on('click', function () {
                 calendarInline.prevMonth();
             });
@@ -560,46 +553,44 @@ myApp.onPageInit('calendar', function (page) {
             });
         },
         onMonthYearChangeStart: function (p) {
-            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] +', ' + p.currentYear);
+            $$('.calendar-custom-toolbar .center').text(monthNames[p.currentMonth] + ', ' + p.currentYear);
         }
     });
 });
 
 /* ===== Pickers ===== */
-myApp.onPageInit('pickers', function (page) {
+myApp.onPageInit('post-order-detail', function (page) {
     var today = new Date();
 
     // iOS Device picker
     var pickerDevice = myApp.picker({
-        input: '#ks-picker-device',
-        cols: [
-            {
-                textAlign: 'center',
-                values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+        input: '.pciker',
+        cols: [{
+            textAlign: 'center',
+            values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3'],
+            onChange: function (picker, country) {
+               console.log(picker);
+               console.log(country);
             }
-        ]
+        }]
     });
-
     // Describe yourself picker
     var pickerDescribe = myApp.picker({
-        input: '#ks-picker-describe',
+        input: '#ks-picker-device',
         rotateEffect: true,
-        cols: [
-            {
-                textAlign: 'left',
-                values: ('Super Lex Amazing Bat Iron Rocket Lex Cool Beautiful Wonderful Raining Happy Amazing Funny Cool Hot').split(' ')
-            },
-            {
-                values: ('Man Luthor Woman Boy Girl Person Cutie Babe Raccoon').split(' ')
-            },
-        ]
+        cols: [{
+            textAlign: 'left',
+            values: ('Super Lex Amazing Bat Iron Rocket Lex Cool Beautiful Wonderful Raining Happy Amazing Funny Cool Hot').split(' ')
+        }, {
+            values: ('Man Luthor Woman Boy Girl Person Cutie Babe Raccoon').split(' ')
+        }]
     });
 
     // Dependent values
     var carVendors = {
-        Japanese : ['Honda', 'Lexus', 'Mazda', 'Nissan', 'Toyota'],
-        German : ['Audi', 'BMW', 'Mercedes', 'Volkswagen', 'Volvo'],
-        American : ['Cadillac', 'Chrysler', 'Dodge', 'Ford']
+        Japanese: ['Honda', 'Lexus', 'Mazda', 'Nissan', 'Toyota'],
+        German: ['Audi', 'BMW', 'Mercedes', 'Volkswagen', 'Volvo'],
+        American: ['Cadillac', 'Chrysler', 'Dodge', 'Ford']
     };
     var pickerDependent = myApp.picker({
         input: '#ks-picker-dependent',
@@ -607,50 +598,42 @@ myApp.onPageInit('pickers', function (page) {
         formatValue: function (picker, values) {
             return values[1];
         },
-        cols: [
-            {
-                textAlign: 'left',
-                values: ['Japanese', 'German', 'American'],
-                onChange: function (picker, country) {
-                    if(picker.cols[1].replaceValues){
-                        picker.cols[1].replaceValues(carVendors[country]);
-                    }
+        cols: [{
+            textAlign: 'left',
+            values: ['Japanese', 'German', 'American'],
+            onChange: function (picker, country) {
+                if (picker.cols[1].replaceValues) {
+                    picker.cols[1].replaceValues(carVendors[country]);
                 }
-            },
-            {
-                values: carVendors.Japanese,
-                width: 160,
-            },
-        ]
+            }
+        }, {
+            values: carVendors.Japanese,
+            width: 160,
+        }, ]
     });
 
     // Custom Toolbar
     var pickerCustomToolbar = myApp.picker({
         input: '#ks-picker-custom-toolbar',
         rotateEffect: true,
-        toolbarTemplate:
-            '<div class="toolbar">' +
-                '<div class="toolbar-inner">' +
-                    '<div class="left">' +
-                        '<a href="#" class="link toolbar-randomize-link">Randomize</a>' +
-                    '</div>' +
-                    '<div class="right">' +
-                        '<a href="#" class="link close-picker">That\'s me</a>' +
-                    '</div>' +
-                '</div>' +
+        toolbarTemplate: '<div class="toolbar">' +
+            '<div class="toolbar-inner">' +
+            '<div class="left">' +
+            '<a href="#" class="link toolbar-randomize-link">Randomize</a>' +
+            '</div>' +
+            '<div class="right">' +
+            '<a href="#" class="link close-picker">That\'s me</a>' +
+            '</div>' +
+            '</div>' +
             '</div>',
-        cols: [
-            {
-                values: ['Mr', 'Ms'],
-            },
-            {
-                textAlign: 'left',
-                values: ('Super Lex Amazing Bat Iron Rocket Lex Cool Beautiful Wonderful Raining Happy Amazing Funny Cool Hot').split(' ')
-            },
-            {
-                values: ('Man Luthor Woman Boy Girl Person Cutie Babe Raccoon').split(' ')
-            },
-        ],
+        cols: [{
+            values: ['Mr', 'Ms'],
+        }, {
+            textAlign: 'left',
+            values: ('Super Lex Amazing Bat Iron Rocket Lex Cool Beautiful Wonderful Raining Happy Amazing Funny Cool Hot').split(' ')
+        }, {
+            values: ('Man Luthor Woman Boy Girl Person Cutie Babe Raccoon').split(' ')
+        }, ],
         onOpen: function (picker) {
             picker.container.find('.toolbar-randomize-link').on('click', function () {
                 var col0Values = picker.cols[0].values;
@@ -675,7 +658,7 @@ myApp.onPageInit('pickers', function (page) {
         rotateEffect: true,
         value: [today.getMonth(), today.getDate(), today.getFullYear(), today.getHours(), (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes())],
         onChange: function (picker, values, displayValues) {
-            var daysInMonth = new Date(picker.value[2], picker.value[0]*1 + 1, 0).getDate();
+            var daysInMonth = new Date(picker.value[2], picker.value[0] * 1 + 1, 0).getDate();
             if (values[1] > daysInMonth) {
                 picker.cols[1].setValue(daysInMonth);
             }
@@ -692,13 +675,15 @@ myApp.onPageInit('pickers', function (page) {
             },
             // Days
             {
-                values: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],
+                values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
             },
             // Years
             {
                 values: (function () {
                     var arr = [];
-                    for (var i = 1950; i <= 2030; i++) { arr.push(i); }
+                    for (var i = 1950; i <= 2030; i++) {
+                        arr.push(i);
+                    }
                     return arr;
                 })(),
             },
@@ -711,7 +696,9 @@ myApp.onPageInit('pickers', function (page) {
             {
                 values: (function () {
                     var arr = [];
-                    for (var i = 0; i <= 23; i++) { arr.push(i); }
+                    for (var i = 0; i <= 23; i++) {
+                        arr.push(i);
+                    }
                     return arr;
                 })(),
             },
@@ -724,7 +711,9 @@ myApp.onPageInit('pickers', function (page) {
             {
                 values: (function () {
                     var arr = [];
-                    for (var i = 0; i <= 59; i++) { arr.push(i < 10 ? '0' + i : i); }
+                    for (var i = 0; i <= 59; i++) {
+                        arr.push(i < 10 ? '0' + i : i);
+                    }
                     return arr;
                 })(),
             }
@@ -758,6 +747,7 @@ myApp.onPageInit('progressbar', function (page) {
 
         // Simluate Loading Something
         var progress = 0;
+
         function simulateLoading() {
             setTimeout(function () {
                 var progressBefore = progress;
@@ -765,8 +755,7 @@ myApp.onPageInit('progressbar', function (page) {
                 myApp.setProgressbar(container, progress);
                 if (progressBefore < 100) {
                     simulateLoading(); //keep "loading"
-                }
-                else myApp.hideProgressbar(container); //hide
+                } else myApp.hideProgressbar(container); //hide
             }, Math.random() * 200 + 200);
         }
         simulateLoading();
@@ -780,6 +769,7 @@ myApp.onPageInit('progressbar', function (page) {
 
         // Simluate Loading Something
         var progress = 0;
+
         function simulateLoading() {
             setTimeout(function () {
                 var progressBefore = progress;
@@ -787,8 +777,7 @@ myApp.onPageInit('progressbar', function (page) {
                 myApp.setProgressbar(container, progress);
                 if (progressBefore < 100) {
                     simulateLoading(); //keep "loading"
-                }
-                else myApp.hideProgressbar(container); //hide
+                } else myApp.hideProgressbar(container); //hide
             }, Math.random() * 200 + 200);
         }
         simulateLoading();
@@ -1053,6 +1042,7 @@ $$('.panel-left, .panel-right').on('close', function () {
 
 /* ===== Generate Content Dynamically ===== */
 var dynamicPageIndex = 0;
+
 function createContentPage() {
     mainView.router.loadContent(
         '  <!-- Page, data-page contains page name-->' +
@@ -1075,4 +1065,5 @@ function createContentPage() {
     );
     return;
 }
+
 $$(document).on('click', '.ks-generate-page', createContentPage);

@@ -1931,6 +1931,11 @@ i.icon.icon-form-url {
   height: 24px;
   background-image: url("../img/i-form-url-material.svg");
 }
+i.icon.icon-restaurant {
+  width: 24px;
+  height: 24px;
+  background-image: url("../img/ic_restaurant_black_24px.svg");
+}
 i.icon.icon-next,
 i.icon.icon-prev {
   width: 24px;
@@ -3451,7 +3456,7 @@ html:not(.watch-active-state) .floating-button:active,
   position: absolute;
   right: 16px;
   bottom: 16px;
-  z-index: 1500;
+  z-index: 9999;
 }
 .floating-button-toolbar .floating-button,
 .speed-dial .floating-button {

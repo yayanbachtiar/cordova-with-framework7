@@ -1,0 +1,72 @@
+<div data-page="post-order-detail" class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="index.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">Order Detail nomor order : {{order_number}}; pemesan : {{pemesan}}; orderby : {{pelayan}}</div>
+      <div class="right"><a href="#" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="content-block-title">Pilih Makanan</div>
+    <form id="detail" action="#">
+      <div class="list-block media-list">
+        <ul>
+          {{#each this.makanan}}
+          <li class="swipeout" id="menu-{{this.id}}" data-menu="{{this.id}}" data-price="{{this.price}}" data-jumlah="1">
+            <div class="swipeout-content">
+              <label class="label-checkbox item-content">
+                <input type="checkbox" name="menu_id" value="{{this.id}}"/>
+                  <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                    <div class="item-title">{{this.menu}}</div>
+                    <div class="item-after">Rp. {{this.price}}</div>
+                    </div>
+                    <div class="item-subtitle">John Doe (@_johndoe) mentioned you on Twitter!</div>
+                    <div class="item-text">
+                        <input type="text" placeholder="Describe yourself" readonly="readonly" class="picker" id="ks-picker-describe"/>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="swipeout-actions-left"><a href="#" class="bg-green swipeout-overswipe demo-reply">Reply</a><a href="#" class="demo-forward bg-blue">Forward</a></div>
+            <div class="swipeout-actions-right"><a href="#" class="demo-actions">More</a><a href="#" class="demo-mark bg-orange">Mark</a><a href="#" data-confirm="Are you sure you want to delete this item?"
+                class="swipeout-delete swipeout-overswipe">Delete</a></div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="content-block-title">Pilih Makanan</div>
+      <div class="list-block media-list">
+        <ul>
+          {{#each this.minuman}}
+          <li class="swipeout" id="menu-{{this.id}}" data-menu="{{this.id}}" data-price="{{this.price}}" data-jumlah="1">
+            <div class="swipeout-content">
+              <label class="label-checkbox item-content">
+                <input type="checkbox" name="menu_id" value="{{this.id}}"/>
+                  <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                    <div class="item-title">{{this.menu}}</div>
+                    <div class="item-after">Rp. {{this.price}}</div>
+                    </div>
+                    <div class="item-subtitle">John Doe (@_johndoe) mentioned you on Twitter!</div>
+                    <div class="item-text">
+                      <select name="jumlah" class="jumlah" data-target="menu-{{this.id}}">
+                        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                      </select>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="swipeout-actions-left"><a href="#" class="bg-green swipeout-overswipe demo-reply">Reply</a><a href="#" class="demo-forward bg-blue">Forward</a></div>
+            <div class="swipeout-actions-right"><a href="#" class="demo-actions">More</a><a href="#" class="demo-mark bg-orange">Mark</a><a href="#" data-confirm="Are you sure you want to delete this item?"
+                class="swipeout-delete swipeout-overswipe">Delete</a></div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </form>
+  </div>
+  <a href="#" class="floating-button color-pink" id="build-order"><i class="icon icon-plus"></i></a>
+</div>
