@@ -1,8 +1,8 @@
 // 
 var db = null;
 // var $$ = Dom7;
-var url = 'http://mbcmplk.pe.hu/index.php/';
-// var url = 'http://localhost/project/web/mbapi/CodeIgniter-3.1.2/';
+// var url = 'http://mbcmplk.pe.hu/index.php/';
+var url = 'http://localhost/project/web/mbapi/CodeIgniter-3.1.2/';
 $$.ajaxSetup({
     headers: {
         'Authorization': 'JANCUKKEY',
@@ -79,22 +79,48 @@ myApp.onPageInit('list-meja', function (page) {
 });
 
 myApp.onPageInit('post-order-detail', function (page) {
-    $$('#build-order').on('click', function (e) {
-        var formData = myApp.formToData('#detail');
+    var OBJ = [];
+    $$('.cart').on('click', function (e) {
+
+        // var formData = (JSON.stringify(myApp.formToJSON('#detail')));
+        // console.log(formData);
     });
     var order_detail = [];
-    $$(".swipeout").on("click", function (page) {
-        var menu_id = $$(this).data('menu');
-        console.log(menu_id);
+    // $$(".swipeout").on("click", function (page) {
+    // var menu_id = $$(this).data('menu');
+    // console.log(menu_id);
+    // });
+
+    $$(".add").on("click", function (page) {
+        var menu_id = $$(this).data('target');
+        var dt = $$(this).data('dt');        
+        var value = $$('#' + menu_id).val();
+        value = incrementValue(value);
+        $$("#" + menu_id).val(value);
+        $$("#"+dt).data('jumlah', value);        
+    });
+
+    $$(".odd").on("click", function (page) {
+        var menu_id = $$(this).data('target');
+        var dt = $$(this).data('dt');
+        var value = $$('#' + menu_id).val();
+        value = decrementValue(value);
+        $$("#" + menu_id).val(value);
+        $$("#"+dt).data('jumlah', value);
+        console.log($$("#"+dt).data('jumlah'));
+    });
+
+    $$('.cart').on('click', function(page) {
+        var data = {
+            menu_id : $$(this).data('menu'),
+            jumlah: $$(this).data('jumlah'),
+            notes: $$(this).data('notes'),
+            price: $$(this).data('price')
+        };
+        OBJ.push(data);
+        // DO CHECK OBJ
     });
     
-    // $$("select.jumlah").change(function (e) {
-    //     var jumlah = $$(this).value();
-    //     var target = $$(this).data('target');
-    //     console.log(jumlah);
-    //     console.log(target);
-    //     $$("#" + target).data('jumlah').value(jumlah);
-    // });
 });
 document.addEventListener("deviceready", function () {
 
@@ -132,22 +158,19 @@ function create_order(dt) {
                 method: 'GET',
                 url: url + 'menu/makanan?format=json',
                 success: function (data, status, xhr) {
-                    var makanan = JSON.parse(data);
-                    var option = generate_option_number();
-                    $$.ajax({
-                        method: 'GET',
-                        url: url + 'menu/minuman?format=json',
-                        success: function (dt, status, xhr) {
-                            var minuman = JSON.parse(dt);
-                            mainView.router.load({
-                                url: view,
-                                context: {
-                                    order_number: detail.nomor_order,
-                                    id: detail.id,
-                                    makanan: makanan,
-                                    minuman: minuman
-                                }
-                            });
+                    var menu = JSON.parse(data);
+                    mainView.router.load({
+                        url: view,
+                        context: {
+                            order_number: detail.nomor_order,
+                            id: detail.id,
+                            makanan: menu.makanan,
+                            minuman: menu.minuman,
+                            kudapan: menu.kudapan,
+                            ingkung_goreng: menu.ingkung_goreng,
+                            ingkung_areh: menu.ingkung_areh,
+                            camilan: menu.camilan,
+                            paket: menu.paket
                         }
                     });
                 },
@@ -185,3 +208,34 @@ function generate_option_number() {
     });
     return option;
 }
+
+function incrementValue(val) {
+    var value = val;
+    value = isNaN(value) ? 0 : value;
+    value++;
+    return value;
+}
+
+function decrementValue(val) {
+    var value = val;
+    value = isNaN(value) ? 0 : value;
+    value--;
+    value = value <= 0 ? 0 : value;
+    return value;
+}
+$$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+};

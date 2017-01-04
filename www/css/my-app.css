@@ -63,6 +63,26 @@ i.icon.icon-restaurant {
     height: 24px;
     background-image: url("../img/ic_restaurant_black_24px.svg");
 }
+i.icon.icon-add {
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/ic_add_circle_black_24px.svg");
+}
+i.icon.icon-odd {
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/ic_indeterminate_check_box_black_24px.svg");
+}
+i.icon.icon-cart {
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/ic_add_shopping_cart_white_24px.svg");
+}
 input.center {
     text-align: center;
+    font-size: 38px !important;
+} 
+
+.button-circle{
+    border-radius: 4%
 }

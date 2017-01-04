@@ -1,0 +1,41 @@
+{
+  "ignore": [
+    "**/.*",
+    "build",
+    "node_modules",
+    "bower_components",
+    "src",
+    "sketch"
+  ],
+  "version": "0.8.7",
+  "name": "framework7-icons",
+  "license": "MIT",
+  "authors": [
+    "Vladimir Kharlampidi <nolimits4web@gmail.com>"
+  ],
+  "keywords": [
+    "fonts",
+    "icon font",
+    "icons",
+    "framework7",
+    "web font",
+    "ios",
+    "ios icons"
+  ],
+  "main": [
+    "css/framework7-icons.css",
+    "fonts/*"
+  ],
+  "homepage": "http://framework7.io/",
+  "description": "Free iOS-icons font for Framework7",
+  "_release": "0.8.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.8.7",
+    "commit": "787408ef04337ac564b5a6156db2aff64f248103"
+  },
+  "_source": "https://github.com/nolimits4web/Framework7-Icons.git",
+  "_target": "^0.8.7",
+  "_originalSource": "framework7-icons",
+  "_direct": true
+}
