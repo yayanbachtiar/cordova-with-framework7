@@ -2,6 +2,7 @@
 var myApp = new Framework7({
     modalTitle: 'Framework7',
     template7Pages: true, //enable Template7 rendering for pages
+    pushState: true,
 
     // Enable Material theme
     material: true
